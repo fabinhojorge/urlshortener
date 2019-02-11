@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block extrahead %} {% endblock %}
+
+{% block extrastyle %} {% endblock %}
+
+{% block extrascript %}
+<script>
+    $( document ).ready(function() {
+
+        var url_input = $('#url_shorter_input');
+
+        url_input.on('keyup',function(){
+            if(url_input.val().length <= 5){
+                url_input.removeClass('is-invalid').removeClass('is-valid');
+            }else if(validate_valid_url(url_input.val())){
+                url_input.addClass('is-valid').removeClass('is-invalid');
+            }else{
+                url_input.addClass('is-invalid').removeClass('is-valid');
+            }
+        });
+
+        function validate_valid_url(url){
+            var regex = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\%\$&'\(\)\*\+,;=.]+$/gm;
+            return regex.test(url);
+        }
+
+        function callShortner(){
+            if(validate_valid_url(url_input.val())){
+
+                $.ajax({
+                    type:'POST',
+                    url: '/rest_api/url/create',
+                    dataType: "json",
+                    data:JSON.stringify({"link":url_input.val()})
+                }).done(function(data) {
+
+                    url_card = $('#url_shortned_detail')
+                    url_card.children('.card-body').children('.card-title').text(data.link)
+                    url_card.children('.card-body').children('#link_short').text('localhost:8000/'+data.link_short)
+                    url_card.children('.card-body').children('#link_short').attr('href',data.link_short)
+                    url_card.children('.card-body').children('#link_details').attr('href',data.link_short+'+')
+                    url_card.children('.card-body').children('#link_count_request').children('span').text(data.count_request)
+                    url_card.children('.card-body').children('#link_count_clicked').children('span').text(data.count_clicked)
+
+                    url_card.fadeIn(700);
+                }).fail(function() {
+                    alert( "error" );
+                })
+            }else{
+                alert('Not possible to send because the URL is not valid');
+            }
+
+            return false;
+        };
+
+        /*$('#url_shorter_btn').on('click', callShortner);*/
+
+        $('#url_shorter_form').on('submit', callShortner);
+
+
+
+
+    });
+
+
+
+
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="mt-5 text-center">
+    <h1>URL Shortner</h1>
+</div>
+
+<form id="url_shorter_form">
+    <div class="input-group input-group-lg my-5">
+
+        <input id="url_shorter_input" type="text" class="form-control" placeholder="Paste a Link to shorten it"
+               aria-label="Link to be shortned"/>
+
+        <div class="input-group-append">
+            <button id='url_shorter_btn' class="btn btn-outline-secondary" type="submit">Button</button>
+        </div>
+
+    </div>
+</form>
+
+<div class="mt-5">
+    <div id="url_shortned_detail" class="card" style="display: none;">
+        <div class="card-body">
+            <h5 class="card-title">URL NAME</h5>
+            <p class="card-text"></p>
+            <a id="link_short" href="#" class="card-link"></a>
+            <p id="link_count_request">Amount of requests: <span class="badge badge-info">0</span></p>
+            <p id="link_count_clicked">Amount clicked: <span class="badge badge-info">0</span></p>
+            <a id="link_details" href="#" class="btn btn-primary"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statistics</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

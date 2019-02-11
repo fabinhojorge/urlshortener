@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block extrahead %} {% endblock %}
+
+{% block extrastyle %} {% endblock %}
+
+{% block extrascript %} {% endblock %}
+
+
+{% block content %}
+
+<div class="mt-5 text-center">
+    <h1>URL Shortner</h1>
+</div>
+
+<div class="mt-5">
+    <div id="url_shortned_detail" class="card" >
+        <div class="card-body">
+            <h3 class="card-title">Statistics</h3>
+            <p class="card-text">URL: <a href="http://{{url.link}}" target="_blank">{{url.link}}</a></p>
+            <p class="card-text">URL SHORTNED: <a href="{% url 'short_url_redirect' url.link_short %}" target="_blank">{{url.link_short}}</a></p>
+            <p class="card-text">COUNT REQUEST: <span class="badge badge-info">{{url.count_request}}</span></p>
+            <p class="card-text">COUNT CLICKED: <span class="badge badge-info">{{url.count_clicked}}</span></p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
