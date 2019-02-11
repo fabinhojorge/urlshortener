@@ -22,6 +22,13 @@ class Url(models.Model):
     def increase_count_clicked(self):
         self.count_clicked = self.count_clicked + 1
 
+    def get_url_redirect(self):
+        url = self.link
+        if '//' not in url:
+            url = "//"+url
+
+        return url
+
     def save(self, *args, **kwargs):
         if self.link and not self.link_short:
             random_value = utils.random_link_generator(size=LINK_SIZE)

@@ -15,6 +15,7 @@ def urlList(request):
     serializer = UrlSerializer(list_url, many=True)
     return Response(serializer.data)
 
+
 @csrf_exempt
 @api_view(['POST'])
 def createUrl(request):

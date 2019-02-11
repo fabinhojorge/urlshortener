@@ -13,7 +13,9 @@ def url_redirect(request, link_short):
     url.increase_count_clicked()
     url.save()
 
-    return redirect(to='http://'+url.link)
+    print('Redirecting to '+url.get_url_redirect())
+
+    return redirect(to=url.get_url_redirect())
 
 def url_statistics(request, link_short):
     data = dict()
