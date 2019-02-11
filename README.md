@@ -1,4 +1,4 @@
-# urlshortener
+# URL Shortener
 
 The idea of this project is to study some technologies and practice. Here you will find a URL shortener like [bit.ly](http://bit.ly).
 
