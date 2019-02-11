@@ -2,6 +2,20 @@
 
 The idea of this project is to study some technologies and practice. Here you will find a URL shortener like [bit.ly](http://bit.ly).
 
+## How to install and Run
+After activate your Python Virtual Environment (_venv_) run the below command:
+
+```
+pip install -r requirements.txt
+
+python manage.py migrate
+
+python manage.py runserver
+```
+
+So you can access in the local URL: _[localhost:8000](localhost:8000/)_
+
+
 ## How to use
 1. In the home page you can find an input text. Type the URL there and press Enter/Submit button
 2. It will generate a short URL. 
