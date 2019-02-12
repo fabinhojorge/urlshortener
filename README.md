@@ -22,7 +22,7 @@ So you can access in the local URL: _[localhost:8000](localhost:8000/)_
 3. If you click in the short URL you will be redirect to the original URL
 4. To get the statistics you just add a plus (_+_) signal in the end of the URL, example:
     * URL: _localhost:8000/2A14S6REML_
-    * Short URL: _localhost:8000//2A14S6REML+_
+    * Statistic URL: _localhost:8000//2A14S6REML+_
 
 Obs: Replace the _localhost:8000_ by your domain
 
