@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
 from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
@@ -10,7 +8,7 @@ from rest_api.models import Url
 
 
 @api_view(['GET'])
-def urlList(request):
+def url_list(request):
     list_url = Url.objects.all()
     serializer = UrlSerializer(list_url, many=True)
     return Response(serializer.data)
@@ -18,7 +16,7 @@ def urlList(request):
 
 @csrf_exempt
 @api_view(['POST'])
-def createUrl(request):
+def create_url(request):
 
     data = JSONParser().parse(request)
 

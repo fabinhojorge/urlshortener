@@ -25,14 +25,14 @@ class Url(models.Model):
     def get_url_redirect(self):
         url = self.link
         if '//' not in url:
-            url = "//"+url
+            url = "//"+str(url)
 
         return url
 
     def save(self, *args, **kwargs):
         if self.link and not self.link_short:
             random_value = utils.random_link_generator(size=LINK_SIZE)
-            while(Url.objects.filter(link_short=random_value).exists()):
+            while Url.objects.filter(link_short=random_value).exists():
                 random_value = utils.random_link_generator(size=LINK_SIZE)
             self.link_short = random_value
         super(Url, self).save(*args, **kwargs)
