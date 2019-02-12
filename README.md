@@ -35,6 +35,6 @@ Obs: Replace the _localhost:8000_ by your domain
 
 
 ## To Do
-* [ ] Enhance the logic for redirect URL. It´s not working for all the URLs
+* [X] Enhance the logic for redirect URL. It´s not working for all the URLs
 * [ ] Add the automatic build (Circleci)
 * [ ] Add test cases for BE and FE
