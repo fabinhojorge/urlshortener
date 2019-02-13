@@ -18,5 +18,5 @@ from rest_api.views import url_list, create_url
 
 urlpatterns = [
     path('url/create', create_url, name='create_url'),
-    path('urls', url_list, name='list_url'),
+    #path('urls', url_list, name='list_url'),
 ]
