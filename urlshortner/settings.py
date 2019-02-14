@@ -83,13 +83,26 @@ WSGI_APPLICATION = 'urlshortner.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+CIRCLE_CI_ENVIRONMENT = os.environ.get('CIRCLE_CI_ENVIRONMENT', False)
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if CIRCLE_CI_ENVIRONMENT:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'circle_test',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+            'USERNAME': 'circleci',
+            'PASSWORD': ''
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
