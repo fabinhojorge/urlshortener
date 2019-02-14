@@ -1,13 +1,12 @@
-from django.test import TestCase
 from rest_framework.test import APITestCase
 from rest_framework import status
-from django.urls import reverse, resolve
+from django.urls import reverse
 from rest_api.models import Url
 
 
 class PathsUrlsTestCase(APITestCase):
 
-    def url_object_creation(self):
+    def test_url_object_creation(self):
         """
         Testing that the post should create a new Url object
         """
@@ -18,7 +17,7 @@ class PathsUrlsTestCase(APITestCase):
         self.assertEqual(Url.objects.count(), 1)
         self.assertEqual(Url.objects.get().link, 'somedummyurltotest.com')
 
-    def two_request_different_url(self):
+    def test_two_request_different_url(self):
         """
         a second different request should create a new object
         """
@@ -29,7 +28,7 @@ class PathsUrlsTestCase(APITestCase):
         self.client.post(url, data, format='json')
         self.assertEqual(Url.objects.count(), 2)
 
-    def second_request_same_url(self):
+    def test_second_request_same_url(self):
         """
         Testing if the request count is incremented after a second request to the same url
         """
