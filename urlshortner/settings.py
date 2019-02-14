@@ -88,7 +88,7 @@ CIRCLE_CI_ENVIRONMENT = os.environ.get('CIRCLE_CI_ENVIRONMENT', False)
 if CIRCLE_CI_ENVIRONMENT:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'circle_test',
             'HOST': '127.0.0.1',
             'PORT': '5432',
