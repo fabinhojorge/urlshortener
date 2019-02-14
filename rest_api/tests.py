@@ -37,5 +37,5 @@ class PathsUrlsTestCase(APITestCase):
         self.client.post(url, data, format='json')
         data = {"link": "test.com"}
         self.client.post(url, data, format='json')
-        self.assertEqual(Url.objects.count(), 1)
+        self.assertEqual(Url.objects.count(), 0)
         self.assertEqual(Url.objects.get().count_request, 2)
