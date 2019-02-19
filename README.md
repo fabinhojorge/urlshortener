@@ -41,3 +41,16 @@ Obs: Replace the _localhost:8000_ by your domain
 * [X] Add the continuous integration build and test (Circleci)
 * [X] Add test cases for BE
 * [ ] Add test cases for FE
+
+
+## Screen Shots
+
+__Home Page__
+![Home page](project_assets/home_page.png)
+
+__Statistic Page__
+![Statistic page](project_assets/statistic.png)
+
+__Redirect Functionality__
+![Redirect functionality](project_assets/redirect_functionality.png)
+
