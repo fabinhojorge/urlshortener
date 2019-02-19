@@ -27,7 +27,7 @@
             return regex.test(url);
         }
 
-        function callShortner(){
+        function callShortener(){
             if(validate_valid_url(url_input.val())){
 
                 $.ajax({
@@ -56,12 +56,8 @@
             return false;
         };
 
-        /*$('#url_shorter_btn').on('click', callShortner);*/
 
-        $('#url_shorter_form').on('submit', callShortner);
-
-
-
+        $('#url_shorter_form').on('submit', callShortener);
 
     });
 
@@ -75,7 +71,7 @@
 {% block content %}
 
 <div class="mt-5 text-center">
-    <h1>URL Shortner</h1>
+    <h1>URL Shortener</h1>
 </div>
 
 <form id="url_shorter_form">

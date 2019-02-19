@@ -46,11 +46,11 @@ Obs: Replace the _localhost:8000_ by your domain
 ## Screen Shots
 
 __Home Page__
-![Home page](project_assets/home_page.png)
+![Home page](project_assets/home_page.jpg)
 
 __Statistic Page__
-![Statistic page](project_assets/statistic.png)
+![Statistic page](project_assets/statistic.jpg)
 
 __Redirect Functionality__
-![Redirect functionality](project_assets/redirect_functionality.png)
+![Redirect functionality](project_assets/redirect_functionality.jpg)
 

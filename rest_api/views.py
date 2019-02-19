@@ -7,13 +7,6 @@ from rest_api.serializers import UrlSerializer
 from rest_api.models import Url
 
 
-@api_view(['GET'])
-def url_list(request):
-    list_url = Url.objects.all()
-    serializer = UrlSerializer(list_url, many=True)
-    return Response(serializer.data)
-
-
 @csrf_exempt
 @api_view(['POST'])
 def create_url(request):
